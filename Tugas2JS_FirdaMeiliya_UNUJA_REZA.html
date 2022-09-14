@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 2 Java Script | Firda Meiliya Hendriana</title>
+</head>
+
+<body>
+
+
+    <table border="1" align="center">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>JABATAN</th>
+                <th>AGAMA</th>
+                <th>GAJI POKOk</th>
+                <th>TUNJANGAN JABATAN</th>
+                <th>TUNJANGAN KESEHATAN</th>
+                <th>GAJI KOTOR</th>
+                <th>ZAKAT PROFESI</th>
+                <th>take home pay</th>
+            </tr>
+        </thead>
+        <tbody>
+            <script>
+                let no, pegawai, jabatan, agama, gaji_pokok, tunjanganjabatan, tunjangan_kesehatan, gajikotor, zakat, take_home_pay, warna;
+
+                for (no = 1; no <= 100; no++) {
+                    if (no <= 25) {
+                        jabatan = "manager"
+                    } else if (no <= 50) {
+                        jabatan = "asisten manager"
+                    } else if (no <= 75) {
+                        jabatan = "supervisor"
+                    } else if (no <= 100) {
+                        jabatan = "staff"
+                    }
+
+                    switch (jabatan) {
+                        case "manager":
+                            gaji_pokok = 15000000
+                            break;
+                        case "asisten manager":
+                            gaji_pokok = 10000000
+                            break;
+                        case "supervisor":
+                            gaji_pokok = 7000000
+                            break;
+                        case "staff":
+                            gaji_pokok = 4000000
+                            break;
+                        default:
+                            gaji_pokok = 3000000
+                            break;
+                    }
+                    tunjanganjabatan = 20 * gaji_pokok / 100;
+                    tunjangan_kesehatan = 10 * gaji_pokok / 100;
+                    gajikotor = gaji_pokok + tunjangan_kesehatan + tunjanganjabatan;
+
+                    agama = (no % 2 == 0) ? 'nonmuslim' : 'muslim'
+                    warna = (no % 2 == 0) ? 'blue' : 'yellow'
+
+                    zakat = (agama == 'muslim' && gajikotor >= 7000000) ? 2.5 * gajikotor / 100 : 0
+                    take_home_pay = gajikotor - zakat;
+
+
+                    document.write(`
+                <tr bgcolor='${warna}'>
+                <td>${no}</td>
+                <td>pegawai${no}</td>
+                <td>${jabatan}</td>
+                <td>${agama}</td>
+                <td>${gaji_pokok}</td>
+                <td>${tunjanganjabatan}</td>
+                <td>${tunjangan_kesehatan}</td>
+                <td>${gajikotor}</td>
+                <td>${zakat}</td>
+                <td>${take_home_pay}</td>
+            </tr>
+                `)
+
+                }
+
+
+            </script>
+
+
+        </tbody>
+
+    </table>
+</body>
+
+</html>
